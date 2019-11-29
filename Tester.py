@@ -2,6 +2,8 @@ import unittest
 import socket
 import time
 
+# En ny comment
+
 #TESTING for ACTIVE Server
 class Test_server (unittest.TestCase):
 
