@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import socket
 from _thread import *
 
@@ -9,6 +7,7 @@ def receive_from_server(s):
         data = s.recv(1024)
         if data:
             print('\n', data.decode("ascii"))
+
 
 def main():
     # local host IP '127.0.0.1'
@@ -34,9 +33,8 @@ def main():
             exit_thread()
             break
 
-        print(f"{username} > {type(message)}")
+        #print(f"{username} > {(message)}")
 
-    s.shutdown()
     s.close()
     quit()
 

@@ -2,15 +2,14 @@ import unittest
 import socket
 import time
 
-# En ny comment
 
 #TESTING for ACTIVE Server
-class Test_server (unittest.TestCase):
+class TestServer (unittest.TestCase):
 
     host = '127.0.0.1'
     port = 42069
 
-    def test_server1(self):
+    def test_server1(self): #Fake client testing Server
         """
         Testar servern
         """

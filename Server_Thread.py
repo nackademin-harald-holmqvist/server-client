@@ -3,12 +3,13 @@ import socket
 from _thread import *
 
 gDict = {}
-newDict = {}
+userDict = {}
+
 
 # receive function
 def receive(c):
     data = c.recv(1024)
-    newDict[c] = data.decode("ascii") #First message contains Username
+    userDict[c] = data.decode("ascii") #First message contains Username
 
     while True:
         # data received from client
@@ -30,11 +31,11 @@ def broadcast(c, data):
     print(" | ".join(str(i) for i in gDict.values()))
 
     for connection in gDict:
-        message = f"{newDict[c]} > {data}"
-        connection.send(f"{newDict[c]} > {data}".encode("ascii"))
+        message = f"{userDict[c]} > {data}"
+        connection.send(f"{userDict[c]} > {data}".encode("ascii"))
         #connection.send(message)
         print(f"Connection: {gDict.get(connection)} | Data: {data}")
-        print(f"{newDict[c]} > {data}")
+        print(f"{userDict[c]} > {data}")
 
 
 def main():
@@ -54,7 +55,7 @@ def main():
         # establish connection with client
         conn, addr = s.accept()
         global gDict
-        global newDict
+        global userDict
         # Adds Socket / Connection to Dict
         gDict[conn] = addr
 
@@ -69,13 +70,6 @@ def main():
     s.close()
     quit()
 
-
-"""
-    If this file is called directly as a python program 
-    Main() will be called. 
-    If it's included as a library nothing will be executed 
-	since all code is located in functions.
-"""
 
 if __name__ == '__main__':
     main()
