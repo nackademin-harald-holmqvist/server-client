@@ -17,13 +17,13 @@ class TestServer (unittest.TestCase):
         conn.connect((self.host, self.port))
         msg = "Username"
         conn.send(msg.encode("ascii"))
-        #time.sleep(1)
+        time.sleep(1)
         msg2 = "Message"
-        #conn.send(msg2.encode("ascii"))
-        #time.sleep(1)
+        conn.send(msg2.encode("ascii"))
+        time.sleep(1)
         rec = conn.recv(1024).decode("ascii")
         conn.close()
-        #self.assertEqual("Username > Message", rec)
+        self.assertEqual("Username > Message", rec)
 
 
 if __name__ == '__main__':
